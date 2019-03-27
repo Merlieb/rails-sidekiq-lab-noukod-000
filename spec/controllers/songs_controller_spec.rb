@@ -1,3 +1,4 @@
+
 require 'rails_helper'
 
 RSpec.describe SongsController do
@@ -8,7 +9,7 @@ RSpec.describe SongsController do
     end
 
     it "uploads and processes a file on a background worker" do
-      post :upload, file: fixture_file_upload('songs.csv', 'text/csv')
+      post :upload, params:{file: fixture_file_upload('songs.csv', 'text/csv')}
       expect(SongsWorker.jobs.size).to eq 1
     end
   end
